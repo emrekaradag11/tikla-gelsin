@@ -1,12 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import SignIn from './src/screens/SignIn';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
+import { Provider } from 'react-redux';
+import store from './src/store';
+import AppNavigation from './src/navigations/AppNavigation';
+
 
 export default function App() {
+  
   return (
-    <SafeAreaView style={styles.container}>
-      <SignIn />
-    </SafeAreaView>
+    <Provider store={store} >
+      <SafeAreaView style={styles.container}>
+        <AppNavigation />
+      </SafeAreaView>
+    </Provider>
   );
 }
 

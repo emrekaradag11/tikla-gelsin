@@ -1,15 +1,19 @@
 import { StyleSheet, Text, View, SafeAreaView, TextInput } from 'react-native';
 
-export default function CustomInput({ value, setValue, placeholder = "Giriniz",secureTextEntry=false }) {
+export default function CustomInput({ value, setValue, placeholder = "Giriniz",errorText = "Geçersiz",secureTextEntry=false,valid=true }) {
     return (
         <View style={styles.container}>
             <TextInput 
-                placeholder={placeholder} 
-                style={styles.input} 
-                onChangeText={setValue}
                 value={value}
+                onChangeText={setValue}
+                placeholder={placeholder} 
+                style={[styles.input,(!valid ? styles.input.isDanger : null)]} 
                 secureTextEntry={secureTextEntry}
                 />
+                {!valid ? (
+                    <Text style={styles.text}>{errorText}</Text>
+                ) : null }
+            
         </View>
     )
 }
@@ -27,5 +31,12 @@ const styles = StyleSheet.create({
         paddingHorizontal : 20,
         paddingVertical : 14,
         marginVertical : 5,
+        isDanger : {
+            borderColor : 'red',
+        }
+    },
+    text : {
+        color : 'red',
+        textAlign : 'center'
     }
 })
