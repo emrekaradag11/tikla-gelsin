@@ -1,5 +1,6 @@
 import SignIn from '../screens/SignIn';
 import ProductList from '../screens/ProductList';
+import Cart from '../screens/Cart';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,7 +16,12 @@ export default function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator>
         {isLogin ? (
-          <Stack.Screen name="ProductList" component={ProductList} />
+          <>
+            <Stack.Screen name="ProductList" options={{
+                headerShown: false
+              }} component={ProductList} />
+            <Stack.Screen name="Cart" component={Cart} />
+          </>
         ) : (
           <Stack.Screen name="SignIn" component={SignIn} />
         )}

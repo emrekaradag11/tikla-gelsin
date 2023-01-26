@@ -36,7 +36,7 @@ export default function SignIn() {
         
         if (password.length < 7) {
             setValidPass(false)
-            setPassErrorText("Geçersiz Şifre Uzunluğu")
+            setPassErrorText("Şifre en az 7 karakter olmalıdır")
             return;
         }
 
@@ -51,9 +51,7 @@ export default function SignIn() {
     }
 
     useEffect(() => {
-
         setLoginButtonStatus((mail.length > 0 && password.length > 0) ? false : true)
-
     },[mail,password])
 
 

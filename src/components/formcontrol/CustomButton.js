@@ -1,14 +1,14 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import themeStyle from '../../assets/styles/theme.style';
 
-export default function CustomButton({ title = "Buton", onPress,disabled=true }) {
+export default function CustomButton({ title = "Giriş Yap", onPress,disabled=true }) {
     return (
         <View style={styles.container}>
             <Pressable 
                 onPress={onPress}
                 disabled={disabled}
                 style={styles.btn}>
-                <Text style={styles.btn.text}>Giriş Yap</Text>
+                <Text style={styles.btn.text}>{title}</Text>
             </Pressable>
         </View>
     )

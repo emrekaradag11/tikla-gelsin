@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "title": "3'lü Whopper",
+    "price": 44.9,
+    "contents": ["Domates","Göbek Salata","Acı Sos"]
+  },
+  {
+    "id": "2",
+    "title": "Kral İkili",
+    "price": 55.9,
+    "contents": ["Hardal","Turşu","Mayonez"]
+  },
+  {
+    "id": "3",
+    "title": "Tıkla Gelsin Özel Menü",
+    "price": 55.9,
+    "contents": ["Nugget","Kızartma","Kola"]
+  },
+  {
+    "id": "4",
+    "title": "Özel Maxi XL Menü",
+    "price": 102.9,
+    "contents": ["Acılı Mayonez","Salatalık"]
+  }
+]
