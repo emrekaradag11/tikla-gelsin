@@ -34,13 +34,13 @@ export default function SignIn() {
             return;
         }
         
+        setValidMail(true)
         if (password.length < 7) {
             setValidPass(false)
             setPassErrorText("Şifre en az 7 karakter olmalıdır")
             return;
         }
 
-        setValidMail(true)
         setValidPass(true)
 
         dispatch(setLogin(true))

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Pressable, Text } from "react-native";
 import Icon from 'react-native-vector-icons/Entypo';
 import themeStyle from '../../assets/styles/theme.style';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../../store/reducers'
 import { useNavigation } from '@react-navigation/native'
 
@@ -13,6 +13,7 @@ const Header = ({ title }) => {
 
     const navigation = useNavigation()
     const handleGoToBasket = () => navigation.navigate('Cart')
+    const total = useSelector(state => state.appReducer.cart)
 
     return (
         <View style={styles.container}>
@@ -24,7 +25,7 @@ const Header = ({ title }) => {
             <Text style={styles.center}>{title}</Text>
             <View style={styles.end}>
                 <Pressable style={styles.end.btn} onPress={handleGoToBasket}>
-                    <Text style={styles.end.btn.text}> <Icon name="shopping-basket" style={styles.icon} /> 5</Text>
+                    <Text style={styles.end.btn.text}> <Icon name="shopping-basket" style={styles.icon} /> {total.length}</Text>
                 </Pressable>
             </View>
         </View>
@@ -51,10 +52,10 @@ const styles = StyleSheet.create({
     },
     end: {
         flex: 1,
-        justifyContent : 'flex-end',
-        flexDirection : 'row',
+        justifyContent: 'flex-end',
+        flexDirection: 'row',
         btn: {
-            flex : 1/3,
+            flex: 1 / 3,
             text: {
                 textAlign: 'right',
                 fontSize: 12,

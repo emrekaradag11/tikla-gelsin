@@ -1,31 +1,48 @@
-import { StyleSheet, SafeAreaView, FlatList, StatusBar, View } from 'react-native';
+import { StyleSheet, SafeAreaView, FlatList, StatusBar, View, Text } from 'react-native';
 import ProductCard from '../components/cart/product/ProductCard';
 import products from './../shared/products.json'
 import ListPrice from '../components/cart/ListPrice';
 import CustomButton from '../components/formcontrol/CustomButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native'
 
 export default function ProductList() {
 
-    const renderProduct = ({ item }) => (
-        <ProductCard product={item} />
-    );
+    const navigation = useNavigation()
+    const cart = useSelector(state => state.appReducer.cart)
+
+    const cartProducts = products.filter(item => {
+        return cart.find(cartItem => cartItem.id === item.id)
+    }).map(item => {
+        item.quantity = cart.find(cartItem => cartItem.id === item.id).quantity
+        return item
+    })
+
+    const handleLocate = () => navigation.navigate('ProductList')
+    const renderProduct = ({ item }) => <ProductCard product={item} />;
 
     return (
         <>
             <SafeAreaView style={styles.container}>
-                <FlatList
-                    data={products}
-                    renderItem={renderProduct}
-                    columnWrapperStyle={styles.row}
-                    keyExtractor={item => item.id}
-                    style={styles.flatlist}
-                />
-                <View style={styles.ListPrice}>
-                    <ListPrice />
-                </View>
-                <View style={styles.bottom}>
-                    <CustomButton title="40 TL Satın Al" />
-                </View>
+                {cartProducts.length ? (
+                    <>
+                        <FlatList
+                            data={cartProducts}
+                            renderItem={renderProduct}
+                            columnWrapperStyle={styles.row}
+                            keyExtractor={item => item.id}
+                            style={styles.flatlist} />
+                        <View style={styles.ListPrice}>
+                            <ListPrice />
+                        </View>
+                    </>
+                ) : (
+                    <>
+                        <Text style={styles.text}>Sepetiniz Boş</Text>
+                        <CustomButton onPress={handleLocate} disabled={false} title="Hemen alışverişe başla" />
+                    </>
+
+                )}
             </SafeAreaView>
         </>
     );
@@ -45,9 +62,11 @@ const styles = StyleSheet.create({
         }
     },
     ListPrice: {
-
+        marginTop: 20
     },
-    bottom: {
-
+    text: {
+        textAlign: 'center',
+        fontSize: 20,
+        marginBottom: 10
     }
 })

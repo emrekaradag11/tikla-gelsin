@@ -1,20 +1,39 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import themeStyle from '../../assets/styles/theme.style';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addCart, incrementQuantity } from '../../store/reducers'
 
 const CardProduct = ({ product }) => {
+
+    const cart = useSelector(state => state.appReducer.cart)
+    const dispatch = useDispatch()
+    const handleAddCart = (id) => {
+        if (cart.find((item) => item.id === id)) {
+            dispatch(incrementQuantity({
+                id: id,
+                quantity: 1,
+            }))
+        } else {
+            dispatch(addCart({
+                id: id,
+                quantity: 1,
+            }))
+        }
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.start}>
                 <Image style={styles.image} source={require(`./../../assets/images/hamburger-menu.png`)} />
-            </View> 
+            </View>
             <View style={styles.center}>
                 <Text style={styles.title}>{product.title}</Text>
                 <Text style={styles.titleSm} numberOfLines={1}>İçindekiler :  {product.contents.join(',')}</Text>
-            </View> 
+            </View>
             <View style={styles.end}>
                 <Pressable
+                    onPress={() => handleAddCart(product.id)}
                     style={styles.btn}>
                     <Text style={styles.btn.text}>{product.price} TL Sepete Ekle</Text>
                 </Pressable>

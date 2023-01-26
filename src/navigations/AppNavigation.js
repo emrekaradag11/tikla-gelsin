@@ -18,12 +18,17 @@ export default function AppNavigation() {
         {isLogin ? (
           <>
             <Stack.Screen name="ProductList" options={{
-              headerShown: false
+              headerShown: false,
+              title: 'Ürün Listesi'
             }} component={ProductList} />
-            <Stack.Screen name="Cart" component={Cart} />
+            <Stack.Screen name="Cart"  options={{
+              title: 'Sepet'
+            }}  component={Cart} />
           </>
         ) : (
-          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignIn" options={{
+            headerShown: false,
+          }} component={SignIn} />
         )}
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,28 +1,56 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import themeStyle from '../../../assets/styles/theme.style';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { incrementQuantity, decrementQuantity, removeCart } from '../../../store/reducers';
+import Icon from 'react-native-vector-icons/Entypo';
 
 const CardProduct = ({ product }) => {
+
+    const dispatch = useDispatch()
+    const handleIncrement = (id) => {
+        dispatch(incrementQuantity({
+            id: id,
+            quantity: 1,
+        }))
+    }
+
+    const handleDecrement = (id) => {
+        dispatch(decrementQuantity({
+            id: id,
+            quantity: 1,
+        }))
+    }
+
+    const handleRemoveCart = (id) => {
+        dispatch(removeCart(id))
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.start}>
-                <Image style={styles.image} source={{ uri: "https://www.tiklagelsin.com/static/tgLogoRed-2e68a5b6e5c0f2f37c792597e8e820f6.png" }} />
+                <Image style={styles.image} source={require(`./../../../assets/images/hamburger-menu.png`)} />
             </View>
             <View style={styles.center}>
                 <Text style={styles.title}>{product.title}</Text>
                 <Text style={styles.titleSm} numberOfLines={1}>İçindekiler :  {product.contents.join(',')}</Text>
             </View>
             <View style={styles.end}>
-                <Pressable style={[styles.btn, styles.plus]}>
-                    <Text style={styles.btn.text}>+</Text>
+                <Pressable onPress={() => handleIncrement(product.id)} style={[styles.btn, styles.plus]}>
+                    <Text style={styles.btn.text}><Icon name="plus" /></Text>
                 </Pressable>
-                <Text style={styles.quantity}>3 adet</Text>
-                <Pressable style={[styles.btn, styles.minus]}>
-                    <Text style={styles.btn.text}>-</Text>
-                </Pressable>
-            </View>
+                <Text style={styles.quantity}>{product.quantity} adet</Text>
+                {product.quantity <= 1 ? (
+                    <Pressable onPress = { () => handleRemoveCart(product.id)} style={[styles.btn, styles.minus]}>
+                        <Text style={styles.btn.text}><Icon name="trash" /></Text>
+                    </Pressable>
+                ): (
+                    <Pressable onPress = { () => handleDecrement(product.id)} style={[styles.btn, styles.minus]}>
+                        <Text style={styles.btn.text}><Icon name="minus" /></Text>
+                    </Pressable>
+                )}
         </View>
+        </View >
     );
 };
 export default CardProduct;

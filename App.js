@@ -1,6 +1,6 @@
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { Provider } from 'react-redux';
-import store from './src/store';
+import store from './src/store'; 
 import AppNavigation from './src/navigations/AppNavigation';
 
 
