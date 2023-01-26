@@ -3,7 +3,7 @@ import ProductList from '../screens/ProductList';
 import Cart from '../screens/Cart';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +18,8 @@ export default function AppNavigation() {
         {isLogin ? (
           <>
             <Stack.Screen name="ProductList" options={{
-                headerShown: false
-              }} component={ProductList} />
+              headerShown: false
+            }} component={ProductList} />
             <Stack.Screen name="Cart" component={Cart} />
           </>
         ) : (

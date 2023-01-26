@@ -51,10 +51,10 @@ const styles = StyleSheet.create({
     },
     end: {
         flex: 1,
-        textAlign: 'right',
-        color: themeStyle.THEME_COLOR,
-        justifyContent: 'flex-end',
+        justifyContent : 'flex-end',
+        flexDirection : 'row',
         btn: {
+            flex : 1/3,
             text: {
                 textAlign: 'right',
                 fontSize: 12,

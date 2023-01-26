@@ -2,12 +2,14 @@ import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const SearchBar = ({ clicked, searchPhrase, setSearchPhrase, setCLicked }) => {
+const SearchBar = ({ value, setValue }) => {
     return (
         <View style={styles.container}>
             <View style={styles.searchBar} >
                 <Icon name="search" size={20} style={styles.icon} />
                 <TextInput
+                    value={value}
+                    onChangeText={setValue}
                     style={styles.input}
                     placeholder="Arama Yap"
                     placeholderTextColor='#000'

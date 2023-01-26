@@ -22,5 +22,41 @@
     "title": "Özel Maxi XL Menü",
     "price": 102.9,
     "contents": ["Acılı Mayonez","Salatalık"]
+  },
+  {
+    "id": "5",
+    "title": "3 Kişilik Doyuran Kova",
+    "price": 102.9,
+    "contents": ["sufle","Ayran"]
+  },
+  {
+    "id": "6",
+    "title": "XL Sandviç Menü",
+    "price": 227.9,
+    "contents": ["Acılı Kanat","Ayran"]
+  },
+  {
+    "id": "7",
+    "title": "Yemeklik Etler",
+    "price": 49.9,
+    "contents": ["Beyaz Et","Kırmızı Et"]
+  },
+  {
+    "id": "8",
+    "title": "Ekonomikings Menü",
+    "price": 110.9,
+    "contents": ["Beyaz Et","Kırmızı Et"]
+  },
+  {
+    "id": "9",
+    "title": "Algida Keyif Menü",
+    "price": 80.9,
+    "contents": ["Dondurma","Light Kola"]
+  },
+  {
+    "id": "10",
+    "title": "Double Fırsat Menü",
+    "price": 25.9,
+    "contents": ["Dondurma","Light Kola"]
   }
 ]
