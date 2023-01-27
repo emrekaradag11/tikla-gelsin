@@ -37,3 +37,7 @@ Here's a list of what this template provides.
 - redux-logger 
 - redux-persist 
 - redux-thunk
+
+### Live
+
+![](https://i.hizliresim.com/sd961zx.gif)
