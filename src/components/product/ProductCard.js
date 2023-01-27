@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Image, Pressable, Alert } from 'react-native';
 import themeStyle from '../../assets/styles/theme.style';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart, incrementQuantity } from '../../store/reducers'
@@ -20,6 +20,7 @@ const CardProduct = ({ product }) => {
                 quantity: 1,
             }))
         }
+        Alert.alert('Sepete Eklendi');
     }
 
     return (
