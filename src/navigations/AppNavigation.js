@@ -3,15 +3,16 @@ import ProductList from '../screens/ProductList';
 import Cart from '../screens/Cart';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useSelector } from 'react-redux';
+import { getData, checkLogin } from '../store/reducers';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const Stack = createNativeStackNavigator();
 
 
 export default function AppNavigation() {
-
+  
   const isLogin = useSelector(state => state.appReducer.isLogin)
-
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -21,9 +22,9 @@ export default function AppNavigation() {
               headerShown: false,
               title: 'Ürün Listesi'
             }} component={ProductList} />
-            <Stack.Screen name="Cart"  options={{
+            <Stack.Screen name="Cart" options={{
               title: 'Sepet'
-            }}  component={Cart} />
+            }} component={Cart} />
           </>
         ) : (
           <Stack.Screen name="SignIn" options={{

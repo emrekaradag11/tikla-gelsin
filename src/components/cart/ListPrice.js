@@ -16,7 +16,7 @@ function ListPrice() {
     const checkout = () => {
         dispatch(emptyCart())
     }
-    
+
     const cartProducts = products.filter(item => {
         return cart.find(cartItem => cartItem.id === item.id)
     }).map(item => {
@@ -28,7 +28,7 @@ function ListPrice() {
         total += value.price * value.quantity
     }
 
-    if(cart.length > 1) discount = (total * discountRate) / 100
+    if (cart.length > 1) discount = (total * discountRate) / 100
 
     netTotal = total - discount
 
@@ -39,10 +39,10 @@ function ListPrice() {
                 {discount > 0 && <Text style={styles.discount}>İndirim : {discount.toFixed(2)} TL</Text>}
                 <View style={styles.totalView}>
                     <Text style={styles.total}>Toplam : {netTotal.toFixed(2)} TL</Text>
-                </View>    
+                </View>
             </View>
-            <View> 
-                <CustomButton onPress={checkout} disabled={false} title={`${netTotal.toFixed(2)} TL Satın Al` } />
+            <View>
+                <CustomButton onPress={checkout} disabled={false} title={`${netTotal.toFixed(2)} TL Satın Al`} />
             </View>
         </View>
     )
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     summary: {
-        paddingHorizontal : 30,
-        marginBottom : 20
+        paddingHorizontal: 30,
+        marginBottom: 20
     },
     totalView: {
         borderTopColor: '#dedede',

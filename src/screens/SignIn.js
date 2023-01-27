@@ -13,17 +13,18 @@ export default function SignIn() {
 
     const [mail, setMail] = useState('')
     const [password, setPassword] = useState('')
-    
+
     const [validMail, setValidMail] = useState(true)
     const [mailErrorText, setMailErrorText] = useState('')
 
     const [validPass, setValidPass] = useState(true)
     const [passErrorText, setPassErrorText] = useState('')
-    
+
     const [loginButtonStatus, setLoginButtonStatus] = useState(true)
 
     const navigation = useNavigation()
     const isLogin = useSelector(state => state.appReducer.isLogin)
+    
     const dispatch = useDispatch()
 
     const onSignIn = async () => {
@@ -33,7 +34,7 @@ export default function SignIn() {
             setMailErrorText("Geçersiz E-Mail")
             return;
         }
-        
+
         setValidMail(true)
         if (password.length < 7) {
             setValidPass(false)
@@ -45,14 +46,14 @@ export default function SignIn() {
 
         dispatch(setLogin(true))
 
-        if (isLogin) 
+        if (isLogin)
             navigation.navigate('ProductList')
 
     }
 
     useEffect(() => {
         setLoginButtonStatus((mail.length > 0 && password.length > 0) ? false : true)
-    },[mail,password])
+    }, [mail, password])
 
 
 

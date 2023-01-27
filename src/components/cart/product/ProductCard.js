@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
 import themeStyle from '../../../assets/styles/theme.style';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { incrementQuantity, decrementQuantity, removeCart } from '../../../store/reducers';
 import Icon from 'react-native-vector-icons/Entypo';
 
