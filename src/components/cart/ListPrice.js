@@ -7,15 +7,14 @@ import { emptyCart } from '../../store/reducers';
 function ListPrice() {
 
     const cart = useSelector(state => state.appReducer.cart)
-    let total = 0;
-    let discount = 0;
     const discountRate = 30;
-    let netTotal = 0;
     const dispatch = useDispatch()
 
-    const checkout = () => {
-        dispatch(emptyCart())
-    }
+    let total = 0;
+    let discount = 0;
+    let netTotal = 0;
+
+    const checkout = () => dispatch(emptyCart())
 
     const cartProducts = products.filter(item => {
         return cart.find(cartItem => cartItem.id === item.id)
@@ -28,7 +27,9 @@ function ListPrice() {
         total += value.price * value.quantity
     }
 
-    if (cart.length > 1) discount = (total * discountRate) / 100
+    // 1'den fazla ürün varsa indirim uygula
+    if (cart.length > 1)
+        discount = (total * discountRate) / 100
 
     netTotal = total - discount
 

@@ -1,6 +1,6 @@
 import { configureStore, combineReducers, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
-import reducers from "./reducers";
+import appReducer from "./reducers";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import logger from 'redux-logger';
 
@@ -10,7 +10,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  appReducer : reducers
+  appReducer
 })
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)

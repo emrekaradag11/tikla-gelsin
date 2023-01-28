@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, FlatList, StatusBar } from 'react-native';
+import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import products from './../shared/products.json'
 import ProductCard from '../components/product/ProductCard';
 import SearchBar from '../components/layout/SearchBar';
@@ -21,9 +21,9 @@ export default function ProductList() {
                 return (item.title.toLowerCase().indexOf(search.toLowerCase()) > -1 || item.contents.join(',').toLowerCase().indexOf(search.toLowerCase()) > -1)
             }));
         }
-
-        else
+        else {
             setData(products);
+        }
 
     }, [search])
 
@@ -47,7 +47,7 @@ export default function ProductList() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: StatusBar.currentHeight || 0,
+        marginTop: 0,
     },
     flatlist: {
         row: {

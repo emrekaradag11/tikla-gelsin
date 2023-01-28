@@ -28,6 +28,7 @@ export default function SignIn() {
     const dispatch = useDispatch()
 
     const onSignIn = async () => {
+
         // check email
         if (!reg.test(mail)) {
             setValidMail(false)
@@ -36,6 +37,8 @@ export default function SignIn() {
         }
 
         setValidMail(true)
+
+        // check pass
         if (password.length < 7) {
             setValidPass(false)
             setPassErrorText("Şifre en az 7 karakter olmalıdır")
@@ -43,24 +46,21 @@ export default function SignIn() {
         }
 
         setValidPass(true)
-
         dispatch(setLogin(true))
 
-        if (isLogin)
+        if (isLogin) 
             navigation.navigate('ProductList')
 
     }
 
     useEffect(() => {
-        setLoginButtonStatus((mail.length > 0 && password.length > 0) ? false : true)
+        setLoginButtonStatus(!(mail.length > 0 && password.length > 0))
     }, [mail, password])
-
-
 
     return (
         <>
             <View style={styles.top}>
-                <Text style={styles.top.topText}>Tıkla Gelsin {isLogin}</Text>
+                <Text style={styles.top.topText}>Tıkla Gelsin</Text>
             </View>
             <View style={styles.center}>
                 <CustomInput placeholder="E-Mail" valid={validMail} value={mail} errorText={mailErrorText} setValue={setMail} />

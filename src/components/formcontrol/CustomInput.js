@@ -10,10 +10,7 @@ export default function CustomInput({ value, setValue, placeholder = "Giriniz", 
                 style={[styles.input, (!valid ? styles.input.isDanger : null)]}
                 secureTextEntry={secureTextEntry}
             />
-            {!valid ? (
-                <Text style={styles.text}>{errorText}</Text>
-            ) : null}
-
+            {!valid && <Text style={styles.text}>{errorText}</Text>}
         </View>
     )
 }

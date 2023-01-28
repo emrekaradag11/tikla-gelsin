@@ -8,23 +8,18 @@ import Icon from 'react-native-vector-icons/Entypo';
 const CardProduct = ({ product }) => {
 
     const dispatch = useDispatch()
-    const handleIncrement = (id) => {
-        dispatch(incrementQuantity({
-            id: id,
-            quantity: 1,
-        }))
-    }
 
-    const handleDecrement = (id) => {
-        dispatch(decrementQuantity({
-            id: id,
-            quantity: 1,
-        }))
-    }
+    const handleIncrement = (id) => dispatch(incrementQuantity({
+        id: id,
+        quantity: 1,
+    }))
 
-    const handleRemoveCart = (id) => {
-        dispatch(removeCart(id))
-    }
+    const handleDecrement = (id) => dispatch(decrementQuantity({
+        id: id,
+        quantity: 1,
+    }))
+
+    const handleRemoveCart = (id) => dispatch(removeCart(id))
 
     return (
         <View style={styles.container}>
@@ -41,15 +36,15 @@ const CardProduct = ({ product }) => {
                 </Pressable>
                 <Text style={styles.quantity}>{product.quantity} adet</Text>
                 {product.quantity <= 1 ? (
-                    <Pressable onPress = { () => handleRemoveCart(product.id)} style={[styles.btn, styles.minus]}>
+                    <Pressable onPress={() => handleRemoveCart(product.id)} style={[styles.btn, styles.minus]}>
                         <Text style={styles.btn.text}><Icon name="trash" /></Text>
                     </Pressable>
-                ): (
-                    <Pressable onPress = { () => handleDecrement(product.id)} style={[styles.btn, styles.minus]}>
+                ) : (
+                    <Pressable onPress={() => handleDecrement(product.id)} style={[styles.btn, styles.minus]}>
                         <Text style={styles.btn.text}><Icon name="minus" /></Text>
                     </Pressable>
                 )}
-        </View>
+            </View>
         </View >
     );
 };

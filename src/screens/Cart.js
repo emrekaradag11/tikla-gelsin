@@ -3,7 +3,7 @@ import ProductCard from '../components/cart/product/ProductCard';
 import products from './../shared/products.json'
 import ListPrice from '../components/cart/ListPrice';
 import CustomButton from '../components/formcontrol/CustomButton';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native'
 
 export default function ProductList() {

@@ -20,7 +20,6 @@ const SearchBar = ({ value, setValue }) => {
 };
 export default SearchBar;
 
-// styles
 const styles = StyleSheet.create({
     container: {
         margin: 15,

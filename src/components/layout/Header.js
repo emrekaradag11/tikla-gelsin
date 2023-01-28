@@ -9,10 +9,11 @@ import { useNavigation } from '@react-navigation/native'
 const Header = ({ title }) => {
 
     const dispatch = useDispatch()
-    const handleLogout = () => dispatch(setLogin(false))
-
     const navigation = useNavigation()
+
+    const handleLogout = () => dispatch(setLogin(false))
     const handleGoToBasket = () => navigation.navigate('Cart')
+    
     const total = useSelector(state => state.appReducer.cart)
 
     return (
@@ -33,7 +34,7 @@ const Header = ({ title }) => {
 };
 export default Header;
 
-// styles
+
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',

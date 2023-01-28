@@ -8,7 +8,9 @@ const CardProduct = ({ product }) => {
 
     const cart = useSelector(state => state.appReducer.cart)
     const dispatch = useDispatch()
+    
     const handleAddCart = (id) => {
+        // ürün sepette varsa arttır, yoksa ekle
         if (cart.find((item) => item.id === id)) {
             dispatch(incrementQuantity({
                 id: id,
