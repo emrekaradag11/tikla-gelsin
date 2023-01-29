@@ -5,7 +5,7 @@ import SearchBar from '../components/layout/SearchBar';
 import Header from '../components/layout/Header';
 import { useEffect, useState } from 'react';
 
-export default function ProductList() {
+const ProductList = () => {
 
     const [search, setSearch] = useState('')
     const [data, setData] = useState(products)
@@ -56,3 +56,5 @@ const styles = StyleSheet.create({
         }
     },
 })
+
+export default ProductList

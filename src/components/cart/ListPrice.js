@@ -4,7 +4,7 @@ import products from './../../shared/products.json'
 import CustomButton from '../formcontrol/CustomButton';
 import { emptyCart } from '../../store/reducers';
 
-function ListPrice() {
+const ListPrice = () => {
 
     const cart = useSelector(state => state.appReducer.cart)
     const discountRate = 30;
@@ -49,8 +49,6 @@ function ListPrice() {
     )
 }
 
-export default ListPrice
-
 const styles = StyleSheet.create({
     container: {
         alignContent: 'space-between',
@@ -79,3 +77,5 @@ const styles = StyleSheet.create({
         marginTop: 10
     }
 })
+
+export default ListPrice

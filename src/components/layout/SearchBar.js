@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import PropTypes from 'prop-types';
 
 const SearchBar = ({ value, setValue }) => {
     return (
@@ -8,6 +9,7 @@ const SearchBar = ({ value, setValue }) => {
             <View style={styles.searchBar} >
                 <Icon name="search" size={20} style={styles.icon} />
                 <TextInput
+                    testID="search-test"
                     value={value}
                     onChangeText={setValue}
                     style={styles.input}
@@ -15,10 +17,19 @@ const SearchBar = ({ value, setValue }) => {
                     placeholderTextColor='#000'
                 />
             </View>
-        </View>
+        </View> 
     );
 };
-export default SearchBar;
+
+SearchBar.propTypes = {
+    value: PropTypes.string,
+    setValue : PropTypes.func
+}
+
+SearchBar.defaultProps = {
+    value: "",
+    setValue :  () => {}
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -49,3 +60,5 @@ const styles = StyleSheet.create({
         color: '#000'
     },
 });
+
+export default SearchBar;

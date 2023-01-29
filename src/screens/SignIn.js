@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../store/reducers'
 
-export default function SignIn() {
+const SignIn = () => {
 
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
 
@@ -67,7 +67,7 @@ export default function SignIn() {
                 <CustomInput placeholder="Şifre" valid={validPass} value={password} errorText={passErrorText} setValue={setPassword} secureTextEntry={true} />
             </View>
             <View style={styles.bottom}>
-                <CustomButton onPress={onSignIn} disabled={loginButtonStatus} />
+                <CustomButton onPress={onSignIn} title="Giriş Yap" disabled={loginButtonStatus} />
             </View>
         </>
     );
@@ -98,3 +98,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 })
+
+export default SignIn

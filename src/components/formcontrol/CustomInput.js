@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import PropTypes from 'prop-types';
 
-export default function CustomInput({ value, setValue, placeholder = "Giriniz", errorText = "Geçersiz", secureTextEntry = false, valid = true }) {
+const CustomInput = ({ value, setValue, placeholder, errorText, secureTextEntry, valid }) => {
     return (
         <View style={styles.container}>
             <TextInput
@@ -13,6 +14,24 @@ export default function CustomInput({ value, setValue, placeholder = "Giriniz", 
             {!valid && <Text style={styles.text}>{errorText}</Text>}
         </View>
     )
+}
+
+CustomInput.propTypes = {
+    value: PropTypes.string,
+    setValue: PropTypes.func,
+    placeholder: PropTypes.string,
+    errorText: PropTypes.string,
+    secureTextEntry: PropTypes.bool,
+    valid: PropTypes.bool
+}
+
+CustomInput.defaultProps = {
+    title: "",
+    setValue: () => { },
+    placeholder: "Giriniz",
+    errorText: "Geçersiz",
+    secureTextEntry: false,
+    valid: true
 }
 
 const styles = StyleSheet.create({
@@ -37,3 +56,5 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 })
+
+export default CustomInput

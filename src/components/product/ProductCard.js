@@ -3,12 +3,13 @@ import { StyleSheet, View, Text, Image, Pressable, Alert } from 'react-native';
 import themeStyle from '../../assets/styles/theme.style';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCart, incrementQuantity } from '../../store/reducers'
+import PropTypes from 'prop-types';
 
 const CardProduct = ({ product }) => {
 
     const cart = useSelector(state => state.appReducer.cart)
     const dispatch = useDispatch()
-    
+
     const handleAddCart = (id) => {
         // ürün sepette varsa arttır, yoksa ekle
         if (cart.find((item) => item.id === id)) {
@@ -44,7 +45,14 @@ const CardProduct = ({ product }) => {
         </View>
     );
 };
-export default CardProduct;
+
+CardProduct.propTypes = {
+    product: PropTypes.object
+}
+
+CardProduct.defaultProps = {
+    product: {}
+}
 
 const styles = StyleSheet.create({
     start: {
@@ -105,3 +113,5 @@ const styles = StyleSheet.create({
         }
     }
 });
+
+export default CardProduct;

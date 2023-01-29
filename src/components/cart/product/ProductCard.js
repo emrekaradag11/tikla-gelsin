@@ -4,6 +4,7 @@ import themeStyle from '../../../assets/styles/theme.style';
 import { useDispatch } from 'react-redux';
 import { incrementQuantity, decrementQuantity, removeCart } from '../../../store/reducers';
 import Icon from 'react-native-vector-icons/Entypo';
+import PropTypes from 'prop-types';
 
 const CardProduct = ({ product }) => {
 
@@ -48,7 +49,14 @@ const CardProduct = ({ product }) => {
         </View >
     );
 };
-export default CardProduct;
+
+CardProduct.propTypes = {
+    product: PropTypes.object
+}
+
+CardProduct.defaultProps = {
+    product: {}
+}
 
 const styles = StyleSheet.create({
     start: {
@@ -127,3 +135,5 @@ const styles = StyleSheet.create({
         }
     }
 });
+
+export default CardProduct;

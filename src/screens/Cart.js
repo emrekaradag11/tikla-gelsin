@@ -6,7 +6,7 @@ import CustomButton from '../components/formcontrol/CustomButton';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native'
 
-export default function ProductList() {
+const ProductList = () => {
 
     const navigation = useNavigation()
     const cart = useSelector(state => state.appReducer.cart)
@@ -70,3 +70,5 @@ const styles = StyleSheet.create({
         marginBottom: 10
     }
 })
+
+export default ProductList

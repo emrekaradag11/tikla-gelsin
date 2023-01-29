@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
-export default function AppNavigation() {
+const AppNavigation = () => {
 
   const isLogin = useSelector(state => state.appReducer.isLogin)
 
@@ -33,3 +33,5 @@ export default function AppNavigation() {
     </NavigationContainer>
   );
 }
+
+export default AppNavigation;

@@ -1,7 +1,8 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import themeStyle from '../../assets/styles/theme.style';
+import PropTypes from 'prop-types';
 
-export default function CustomButton({ title = "Giriş Yap", onPress, disabled = true }) {
+const CustomButton = ({ title, onPress, disabled }) => {
     return (
         <View style={styles.container}>
             <Pressable
@@ -12,6 +13,18 @@ export default function CustomButton({ title = "Giriş Yap", onPress, disabled =
             </Pressable>
         </View>
     )
+}
+
+CustomButton.propTypes = {
+    title: PropTypes.string,
+    onPress: PropTypes.func,
+    disabled: PropTypes.bool
+}
+
+CustomButton.defaultProps = {
+    title: "Button Title",
+    onPress: () => { },
+    disabled: true
 }
 
 const styles = StyleSheet.create({
@@ -31,3 +44,5 @@ const styles = StyleSheet.create({
         }
     }
 })
+
+export default CustomButton
